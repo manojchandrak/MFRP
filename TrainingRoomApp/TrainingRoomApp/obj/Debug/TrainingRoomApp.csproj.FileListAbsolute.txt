@@ -1,0 +1,11 @@
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\bin\TrainingRoomApp.dll
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\bin\TrainingRoomApp.pdb
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\obj\Debug\ResolveAssemblyReference.cache
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\obj\Debug\TrainingRoomApp.dll
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\obj\Debug\TrainingRoomApp.pdb
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\bin\TrainingRoomBLL.dll
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\bin\TrainingRoomEF.dll
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\bin\TrainingRoomDAL.dll
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\bin\TrainingRoomBLL.pdb
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\bin\TrainingRoomEF.pdb
+D:\Team MSVK\TrainingRoomApp\TrainingRoomApp\bin\TrainingRoomDAL.pdb

@@ -1,0 +1,243 @@
+-- Database creation
+ CREATE DATABASE TrainingRoomAppDB;
+
+use TrainingRoomAppDB;
+
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<table for location details>
+-- =============================================
+CREATE TABLE tblLocation (LocationID int  IDENTITY(1,1) PRIMARY KEY,LocationName  nvarchar(50));
+
+INSERT INTO tblLocation VALUES ('CHENNAI'),('COIMBATORE'),('KOCHI'),('HYDERABAD'),('KOLKOTA'),('DELHI'),('PUNE');
+
+select * from tblLocation;
+delete from tblLocation where LocationName is null;
+
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<table for campus details>
+-- =============================================
+CREATE TABLE tblCampus (CampusID int  IDENTITY(1,1) PRIMARY KEY,CampusName nvarchar(50),LocationID int not null FOREIGN KEY (LocationID) REFERENCES tblLocation(LocationID) );
+
+INSERT INTO tblCampus VALUES ('THAMBARAM',1),('SIRUSERI',1),('KCT',2),('SEZ',2),('MEPS',3),('SEZ3',3),('DLF',4),('SEZ4',5),('MEPS1',6),('MEPS2',7);
+
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<table for training Room details>
+-- =============================================
+ CREATE TABLE tbltrainingRoomDetails 
+ (TrainingRoomID nvarchar (50) PRIMARY KEY,
+  TrainingRoomname nvarchar(50),
+  Block nvarchar (50), 
+  Floornumber int,
+  LocationName nvarchar(50) ,
+  CampusName nvarchar(50));
+  
+ INSERT INTO tbltrainingRoomDetails VALUES ('CHN01','MANIFESTO','WEST WING',1,'CHENNAI','THAMBARAM'),
+('CHN02','MICHIGAN','EAST WING',2,'CHENNAI','THAMBARAM'),
+('CHN03','NEWTON','NORTH WING',3,'CHENNAI','THAMBARAM'),
+('CHN04','NEURON','EAST WING',1,'CHENNAI','SIRUSERI'),
+('CHN05','NAPOLEAN','WEST WING',2,'CHENNAI','SIRUSERI'),
+('CHN06','ROGER','SOUTH WING',3,'CHENNAI','SIRUSERI'),
+('CBE01','MOURIYA','WEST WING',1,'COIMBATORE','KCT'),
+('CBE02','ALEXANDER','NORTH WING',2,'COIMBATORE','KCT'),
+('CBE03','GANGA','SOUTH WING',2,'COIMBATORE','KCT'),
+('CBE04','CAMBRIDGE','EAST WING',1,'COIMBATORE','SEZ'),
+('CBE05','YAMUNA','WEST WING',2,'COIMBATORE','SEZ'),
+('CBE06','KAVERY','NORTH WING',3,'COIMBATORE','SEZ'),
+('KOC01','NILE','NORTH WING',1,'KOCHI','MEPS'),
+('KOC02','AMAZON','SOUTH WING',2,'KOCHI','MEPS'),
+('KOC03','INDUS','EAST WING',3,'KOCHI','MEPS'),
+('KOC04','TEXAS','NORTH WING',1,'KOCHI','SEZ3'),
+('KOC05','EXTEMPORE','WEST WING',2,'KOCHI','SEZ3'),
+('KOC06','EVEREST','SOUTH WING',2,'KOCHI','SEZ3'),
+('HYD01','ARYABHATTA','WEST WING',1,'HYDERABAD','DLF'),
+('HYD02','OXFORD','EAST WING',2,'HYDERABAD','DLF'),
+('HYD03','COLUMBUS','NORTH WING',2,'HYDERABAD','DLF'),
+('KOL01','EINSTEIN','SOUTH WING',2,'KOLKOTA','SEZ4'),
+('KOL02','BHEETHOVAN','NORTH WING',2,'KOLKOTA','SEZ4'),
+('KOL03','MOZART','NORTH WING',3,'KOLKOTA','SEZ4'),
+('DLH01','GLASSGOW','NORTH WING',1,'DELHI','MEPS1'),
+('DLH02','BOSE','SOUTH WING',2,'DELHI','MEPS1'),
+('DLH03','BHAGATH SINGH','SOUTH WING',3,'DELHI','MEPS1'),
+('PUN01','RAMAN','EAST WING',1,'PUNE','MEPS2'),
+('PUN02','CHATRAPATHI','WEST WING',2,'PUNE','MEPS2'),
+('PUN03','THERESA','WEST WING',2,'PUNE','MEPS2');
+ 
+ -- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<table for Booking details>
+-- =============================================
+ CREATE TABLE tblSlot (SlotID int IDENTITY(1,1) PRIMARY KEY ,UserID int,TrainingRoomID nvarchar (50), FromDate date ,ToDate date);
+
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<Procedure for populating location drop down list>
+-- =============================================
+
+CREATE PROCEDURE procGetLocation
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Fetching the department details	
+	Select LocationID, LocationName from tblLocation Order By LocationName
+END;
+
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<Procedure for populating Campus drop down list>
+-- =============================================
+
+ALTER PROCEDURE procGetcampus @LocationName nvarchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Fetching the department details	
+	Select CampusID, CampusName 
+	From tblCampus Inner Join tblLocation 
+	On tblCampus.LocationID = tblLocation.LocationID 
+	WHERE tblLocation.LocationName=@LocationName
+END;
+
+
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<Procedure for retrieving Training Room details>
+-- =============================================
+
+ 
+CREATE PROCEDURE procGetTrainingRoomDetails (@LocationName nvarchar (50), @CampusName nvarchar (50))
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Fetching the department details	
+	Select TrainingRoomID,TrainingRoomname,Floornumber,Block
+	From tbltrainingRoomDetails 	
+	WHERE tbltrainingRoomDetails.LocationName=@LocationName and tbltrainingRoomDetails.CampusName=@CampusName
+	
+END;
+
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<Procedure for Blocking Training Room>
+-- =============================================
+
+Alter PROCEDURE procTrainingRoomBlocking
+	@UserID int,
+	@TrainingRoomID nvarchar (50),
+	@FromDate date,
+	@ToDate date
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Insert Into tblSlot(UserID,TrainingRoomID,FromDate,ToDate)
+	Values(@UserID,@TrainingRoomID,@FromDate,@Todate)
+END;
+exec procTrainingRoomBlocking 397760,'CHN01','12/21/2014','12/28/2014';
+select *from tblSlot;
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/08/2014>
+-- Description:	<Procedure for Checking Training Room Availability>
+-- =============================================
+
+ALTER PROCEDURE procRoomAvailability 
+
+@TrainingRoomID nvarchar(50),
+@FromDate date,
+@ToDate date
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Fetching the department details	
+	Select UserID,TrainingRoomID,FromDate,ToDate
+	From tblSlot 	
+	WHERE  tblSlot.TrainingRoomID=@TrainingRoomID and 
+	(@FromDate   between tblSlot.FromDate and tblSlot.ToDate or
+	@ToDate  between tblSlot.FromDate and tblSlot.ToDate)
+    END;
+ -- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/12/2014>
+-- Description:	<Procedure for Checking Training Room Availability>
+-- =============================================  
+    
+CREATE PROCEDURE DeleteBookingDetails 
+@SlotID int
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Deleting the Booked Room Details
+DELETE  FROM tblSlot
+WHERE tblSlot.SlotID=@SlotID 
+END
+-- =============================================
+-- Author:		<Saranya S Kumar>
+-- Create date: < 02/12/2014>
+-- Description:	<Procedure for Checking Training Room Availability>
+-- =============================================
+CREATE PROCEDURE [dbo].[procGettingBookedDetails]
+@UserID INT
+AS
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Retrieving the Booked Room Details
+SELECT SlotID,TrainingRoomID,convert(varchar(10),FromDate) as fromdate,convert(varchar(10),ToDate)as todate
+ FROM tblSlot
+WHERE tblSlot.UserID=@UserID 
+END;
+ 
+ CREATE TABLE tblReviews(ReviewId int IDENTITY(1,1) PRIMARY KEY ,UserID INT  NOT NULL, Reviews NVARCHAR(400) NOT NULL);
+SELECT *FROM tblReviews;
+
+CREATE PROCEDURE uspAddReviews(@UserID int,@Reviews NVARCHAR(400))
+AS 
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- Inserting the Reviews
+INSERT INTO tblReviews(UserID,Reviews) 
+VALUES(@UserID,@Reviews)
+END;
+EXEC uspAddReviews 397760, 'Its Good';
+
+CREATE PROCEDURE uspGetReviews
+AS 
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+SET NOCOUNT ON;
+-- GETTING the Reviews
+SELECT UserID,Reviews FROM tblReviews
+END;
+EXEC uspGetReviews

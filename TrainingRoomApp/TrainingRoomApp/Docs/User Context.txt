@@ -1,0 +1,25 @@
+﻿
+The below code sample shows how to get the User Context instance and then use its properties
+=============================================================================================
+
+protected void Page_Load(object sender, EventArgs e)
+{
+    try
+    {
+        UserContext usr = UserContext.GetUserContext();
+        string UserId = usr.CurrentUser.UserId;
+        string UserName = usr.CurrentUser.FirstName;
+        bool isAssociate = usr.CurrentUser.IsNonAssociate;
+        //...
+    }
+
+    catch (UserContextException uex)
+    {
+        // Handle User Context exception here
+    }
+	catch (Exception ex)
+	{
+		// Handle other exceptions here
+	}
+}
+

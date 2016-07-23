@@ -1,0 +1,663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1BBB19E-8710-435E-A3DC-219834B06FB5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TrainingRoomApp</RootNamespace>
+    <AssemblyName>TrainingRoomApp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>OneC.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CTS.OneC.Platform.CoreServices.FormRedirectionUrl, Version=1.0.0.0, Culture=neutral, PublicKeyToken=81a64a54e454dbc4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\Installer\CTS.OneC.Platform.CoreServices.FormRedirectionUrl.dll</HintPath>
+    </Reference>
+    <Reference Include="CTS.OneC.PlatForm.CoreServices.FormUrl_BLL">
+      <HintPath>..\..\..\..\..\Desktop\Installer\CTS.OneC.PlatForm.CoreServices.FormUrl_BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CTS.OneC.PlatForm.CoreServices.FormUrl_DAL">
+      <HintPath>..\..\..\..\..\Desktop\Installer\CTS.OneC.PlatForm.CoreServices.FormUrl_DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="CTS.OneCognizant.Platform.CoreServices">
+      <HintPath>..\CTS.OneCognizant.Platform.CoreServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Docs\App dev guidelines.txt" />
+    <Content Include="Docs\URL Redirection.txt" />
+    <Content Include="Docs\User Context.txt" />
+    <Content Include="Pages\RegisterRoom.aspx" />
+    <Content Include="Resources\Images\animated-overlay.gif" />
+    <Content Include="Resources\Images\back1.jpg" />
+    <Content Include="Resources\Images\bg_hover.png" />
+    <Content Include="Resources\Images\bg_selectable.png" />
+    <Content Include="Resources\Images\bg_selected.png" />
+    <Content Include="Resources\Images\glyphicons-halflings-white.png" />
+    <Content Include="Resources\Images\glyphicons-halflings.png" />
+    <Content Include="Resources\Images\img1.jpg" />
+    <Content Include="Resources\Images\img2.jpg" />
+    <Content Include="Resources\Images\training.jpg" />
+    <Content Include="Resources\Images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Resources\Images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Resources\Images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Resources\Images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Resources\Images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Resources\Images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Resources\Images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Resources\Images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Resources\Images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Resources\Images\ui-icons_222222_256x240.png" />
+    <Content Include="Resources\Images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Resources\Images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Resources\Images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Resources\Images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Resources\JS\bootstrap.js" />
+    <Content Include="Resources\JS\jquery-1.10.1.min.js" />
+    <Content Include="Resources\JS\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Resources\Styles\bootstrap.css" />
+    <Content Include="Resources\Styles\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Test Launch Pages\TestContainer.html" />
+    <Content Include="Resources\Images\11_08.jpg" />
+    <Content Include="Resources\Images\1Concierge_overlayboximage.gif" />
+    <Content Include="Resources\Images\1c_logo.png" />
+    <Content Include="Resources\Images\1Rbox_headingbg.jpg" />
+    <Content Include="Resources\Images\accordian_arrowdown_up.png" />
+    <Content Include="Resources\Images\accordian_arrowup.gif" />
+    <Content Include="Resources\Images\accordian_arrowup_up.png" />
+    <Content Include="Resources\Images\accordian_arrow_down.gif" />
+    <Content Include="Resources\Images\active.gif" />
+    <Content Include="Resources\Images\active.png" />
+    <Content Include="Resources\Images\active_over.gif" />
+    <Content Include="Resources\Images\active_over.png" />
+    <Content Include="Resources\Images\add_linkicon.png" />
+    <Content Include="Resources\Images\alerticon_mqrquee.jpg" />
+    <Content Include="Resources\Images\alerticon_mqrquee.png" />
+    <Content Include="Resources\Images\alert_title_redico.gif" />
+    <Content Include="Resources\Images\allow_lang.gif" />
+    <Content Include="Resources\Images\appIconSmall.png" />
+    <Content Include="Resources\Images\appicon_soft.png" />
+    <Content Include="Resources\Images\approw2_dottedline.gif" />
+    <Content Include="Resources\Images\approw_dottedline.gif" />
+    <Content Include="Resources\Images\app_icon.gif" />
+    <Content Include="Resources\Images\app_slideboxsep.jpg" />
+    <Content Include="Resources\Images\arrow-dottedgreen-tab.gif" />
+    <Content Include="Resources\Images\arrow-dotter-tab.gif" />
+    <Content Include="Resources\Images\arrow-dotterbrw-tab.gif" />
+    <Content Include="Resources\Images\arrowList.gif" />
+    <Content Include="Resources\Images\arrow_backto.gif" />
+    <Content Include="Resources\Images\arrow_brdcm.gif" />
+    <Content Include="Resources\Images\arrow_brdcm_next.gif" />
+    <Content Include="Resources\Images\arrow_brdcm_prev.gif" />
+    <Content Include="Resources\Images\arrow_dn.gif" />
+    <Content Include="Resources\Images\arrow_index.gif" />
+    <Content Include="Resources\Images\arrow_tableft.gif" />
+    <Content Include="Resources\Images\arrow_tooltip.gif" />
+    <Content Include="Resources\Images\arrow_toplink.gif" />
+    <Content Include="Resources\Images\arrow_up.gif" />
+    <Content Include="Resources\Images\avatar-gal.png" />
+    <Content Include="Resources\Images\avatar-guy.png" />
+    <Content Include="Resources\Images\avatar-lady.png" />
+    <Content Include="Resources\Images\avatar-manager.png" />
+    <Content Include="Resources\Images\avatarscion.png" />
+    <Content Include="Resources\Images\banner_btm.jpg" />
+    <Content Include="Resources\Images\banner_btm.png" />
+    <Content Include="Resources\Images\banner_collsboxbg.jpg" />
+    <Content Include="Resources\Images\banner_contentbg.gif" />
+    <Content Include="Resources\Images\banner_contentbg.png" />
+    <Content Include="Resources\Images\banner_photo_franks.jpg" />
+    <Content Include="Resources\Images\banner_top.png" />
+    <Content Include="Resources\Images\bgblue_popup.jpg" />
+    <Content Include="Resources\Images\bgBtn.jpg" />
+    <Content Include="Resources\Images\bgcollapse_slidebox.png" />
+    <Content Include="Resources\Images\bgTab_concierge.jpg" />
+    <Content Include="Resources\Images\bgWrapper.gif" />
+    <Content Include="Resources\Images\bgWrapper.png" />
+    <Content Include="Resources\Images\bg_alreadysubslide.jpg" />
+    <Content Include="Resources\Images\bg_appc_breadcrumb.jpg" />
+    <Content Include="Resources\Images\bg_approvalheading.jpg" />
+    <Content Include="Resources\Images\bg_approvalhover.jpg" />
+    <Content Include="Resources\Images\bg_bannerbtn.gif" />
+    <Content Include="Resources\Images\bg_bluebtn.jpg" />
+    <Content Include="Resources\Images\bg_brownbtn.jpg" />
+    <Content Include="Resources\Images\bg_brown_heading.jpg" />
+    <Content Include="Resources\Images\bg_buttomicons.jpg" />
+    <Content Include="Resources\Images\bg_buttomicons.png" />
+    <Content Include="Resources\Images\bg_calendar_blueheader.jpg" />
+    <Content Include="Resources\Images\bg_calender_dayheader.jpg" />
+    <Content Include="Resources\Images\bg_collpsibleheader.jpg" />
+    <Content Include="Resources\Images\bg_collpsibleheaderactive.jpg" />
+    <Content Include="Resources\Images\bg_collpsibleheaderactive_up.gif" />
+    <Content Include="Resources\Images\bg_collpsibleheader_up.gif" />
+    <Content Include="Resources\Images\bg_coment_even.gif" />
+    <Content Include="Resources\Images\bg_concDetail_tbl.gif" />
+    <Content Include="Resources\Images\bg_concerto_divider.gif" />
+    <Content Include="Resources\Images\bg_concerto_tbl.gif" />
+    <Content Include="Resources\Images\bg_conciergecontent.jpg" />
+    <Content Include="Resources\Images\bg_concierge_slidethumb.png" />
+    <Content Include="Resources\Images\bg_ConcTab_divider.gif" />
+    <Content Include="Resources\Images\bg_ConcTab_hdr.gif" />
+    <Content Include="Resources\Images\bg_ConcTab_hdr_hover.gif" />
+    <Content Include="Resources\Images\bg_conc_ddn.gif" />
+    <Content Include="Resources\Images\bg_conc_divider.gif" />
+    <Content Include="Resources\Images\bg_conc_hover.gif" />
+    <Content Include="Resources\Images\bg_conc_pag.gif" />
+    <Content Include="Resources\Images\bg_conc_slider.gif" />
+    <Content Include="Resources\Images\bg_conc_slidethumb.png" />
+    <Content Include="Resources\Images\bg_con_progressbar.gif" />
+    <Content Include="Resources\Images\bg_con_progressbar.jpg" />
+    <Content Include="Resources\Images\bg_con_progressbar.png" />
+    <Content Include="Resources\Images\bg_con_progressbarleft.gif" />
+    <Content Include="Resources\Images\bg_con_progressbar_right.gif" />
+    <Content Include="Resources\Images\bg_datagridheading.jpg" />
+    <Content Include="Resources\Images\bg_DateRng_Ifield.gif" />
+    <Content Include="Resources\Images\bg_dropdown.gif" />
+    <Content Include="Resources\Images\bg_dropdown.png" />
+    <Content Include="Resources\Images\bg_DV_grad.jpg" />
+    <Content Include="Resources\Images\bg_DV_subHdr.jpg" />
+    <Content Include="Resources\Images\bg_eapprovalheading.jpg" />
+    <Content Include="Resources\Images\bg_formfield.gif" />
+    <Content Include="Resources\Images\bg_graybtn.png" />
+    <Content Include="Resources\Images\bg_gridView_heading.jpg" />
+    <Content Include="Resources\Images\bg_grid_heading.jpg" />
+    <Content Include="Resources\Images\bg_HRL2.gif" />
+    <Content Include="Resources\Images\bg_input.gif" />
+    <Content Include="Resources\Images\bg_leftCorner_Concerto.gif" />
+    <Content Include="Resources\Images\bg_navdropmenu.png" />
+    <Content Include="Resources\Images\bg_navdropmenusettings.png" />
+    <Content Include="Resources\Images\bg_navgradient.gif" />
+    <Content Include="Resources\Images\bg_num_box.gif" />
+    <Content Include="Resources\Images\bg_num_box_blue.gif" />
+    <Content Include="Resources\Images\bg_num_box_DarkGreen.gif" />
+    <Content Include="Resources\Images\bg_num_box_green.gif" />
+    <Content Include="Resources\Images\bg_num_box_orange.gif" />
+    <Content Include="Resources\Images\bg_num_box_pink.gif" />
+    <Content Include="Resources\Images\bg_num_box_purple.gif" />
+    <Content Include="Resources\Images\bg_popup_heading.jpg" />
+    <Content Include="Resources\Images\bg_RC_detailbox_header.gif" />
+    <Content Include="Resources\Images\bg_RC_onboardbar.jpg" />
+    <Content Include="Resources\Images\bg_RC_onboard_bar1.png" />
+    <Content Include="Resources\Images\bg_RC_onboard_bar2.png" />
+    <Content Include="Resources\Images\bg_RC_record.gif" />
+    <Content Include="Resources\Images\bg_RC_slot1.gif" />
+    <Content Include="Resources\Images\bg_RC_slot2.gif" />
+    <Content Include="Resources\Images\bg_RC_slot3.gif" />
+    <Content Include="Resources\Images\bg_rightbox.jpg" />
+    <Content Include="Resources\Images\bg_rightbox_head.jpg" />
+    <Content Include="Resources\Images\bg_RightCorner_Concerto.gif" />
+    <Content Include="Resources\Images\bg_rightSectionHeading.jpg" />
+    <Content Include="Resources\Images\bg_roundbluebtn.jpg" />
+    <Content Include="Resources\Images\bg_roundbluebtn_link.jpg" />
+    <Content Include="Resources\Images\bg_search.gif" />
+    <Content Include="Resources\Images\bg_search.png" />
+    <Content Include="Resources\Images\bg_searchbtn.gif" />
+    <Content Include="Resources\Images\bg_searchbtn_h.gif" />
+    <Content Include="Resources\Images\bg_sliderappstore.jpg" />
+    <Content Include="Resources\Images\bg_slide_wrapper.gif" />
+    <Content Include="Resources\Images\bg_slide_wrapper.png" />
+    <Content Include="Resources\Images\bg_state_row.jpg" />
+    <Content Include="Resources\Images\bg_state_row.png" />
+    <Content Include="Resources\Images\bg_tab_concerto.gif" />
+    <Content Include="Resources\Images\bg_textAreaUP.gif" />
+    <Content Include="Resources\Images\bg_thumbhover_sliderbtm.png" />
+    <Content Include="Resources\Images\bg_thumb_sliderbtm.png" />
+    <Content Include="Resources\Images\bg_topnav.gif" />
+    <Content Include="Resources\Images\bg_toprowBox.jpg" />
+    <Content Include="Resources\Images\bg_toprow_concierge.jpg" />
+    <Content Include="Resources\Images\bg_UP_privacy.gif" />
+    <Content Include="Resources\Images\bg_UP_privacyHeader.gif" />
+    <Content Include="Resources\Images\bg_VC_date.gif" />
+    <Content Include="Resources\Images\bg_wrapper.png" />
+    <Content Include="Resources\Images\blue_headingbg.jpg" />
+    <Content Include="Resources\Images\bodybg.jpg" />
+    <Content Include="Resources\Images\bottom_shadow_topmenu.png" />
+    <Content Include="Resources\Images\box_btm168.gif" />
+    <Content Include="Resources\Images\box_btm168.jpg" />
+    <Content Include="Resources\Images\box_btm624.jpg" />
+    <Content Include="Resources\Images\box_btm795.gif" />
+    <Content Include="Resources\Images\box_btmcenter.gif" />
+    <Content Include="Resources\Images\btm_arrow_overlay.gif" />
+    <Content Include="Resources\Images\btm_shadow_settingsmenu.png" />
+    <Content Include="Resources\Images\btm_shadow_settingsmenu.png.png" />
+    <Content Include="Resources\Images\btn_addContact.gif" />
+    <Content Include="Resources\Images\btn_ask_concierge.gif" />
+    <Content Include="Resources\Images\btn_brdcrumb.jpg" />
+    <Content Include="Resources\Images\btn_brdcrumb_h.jpg" />
+    <Content Include="Resources\Images\btn_brownhover.gif" />
+    <Content Include="Resources\Images\btn_editProfile.gif" />
+    <Content Include="Resources\Images\btn_play.gif" />
+    <Content Include="Resources\Images\btn_saveChanges.gif" />
+    <Content Include="Resources\Images\btn_setReminder.gif" />
+    <Content Include="Resources\Images\btn_sharecab.gif" />
+    <Content Include="Resources\Images\btn_ShowR.gif" />
+    <Content Include="Resources\Images\btn_VC.gif" />
+    <Content Include="Resources\Images\Calendar.png" />
+    <Content Include="Resources\Images\circle_completed.png" />
+    <Content Include="Resources\Images\circle_completed3.png" />
+    <Content Include="Resources\Images\close_askoverlay.gif" />
+    <Content Include="Resources\Images\close_askoverlay2.gif" />
+    <Content Include="Resources\Images\close_slideboxoverlay.gif" />
+    <Content Include="Resources\Images\cognizant_formbanner.gif" />
+    <Content Include="Resources\Images\collapse.jpg" />
+    <Content Include="Resources\Images\completed_circle1.png" />
+    <Content Include="Resources\Images\Concierge_gift_ico.jpg" />
+    <Content Include="Resources\Images\contentbg.png" />
+    <Content Include="Resources\Images\content_boxbg.png" />
+    <Content Include="Resources\Images\control_left.jpg" />
+    <Content Include="Resources\Images\control_right.gif" />
+    <Content Include="Resources\Images\control_right.jpg" />
+    <Content Include="Resources\Images\Copy of accordian_arrowdown_up.png" />
+    <Content Include="Resources\Images\Copy of logo_1c.png" />
+    <Content Include="Resources\Images\date_next.gif" />
+    <Content Include="Resources\Images\date_prev.gif" />
+    <Content Include="Resources\Images\dotted_devider.gif" />
+    <Content Include="Resources\Images\download_icon.gif" />
+    <Content Include="Resources\Images\dropdown_bgsettings.png" />
+    <Content Include="Resources\Images\eapp_preview_icon.gif" />
+    <Content Include="Resources\Images\excel_icon.jpg" />
+    <Content Include="Resources\Images\eye_icon_dark.png" />
+    <Content Include="Resources\Images\eye_icon_light.png" />
+    <Content Include="Resources\Images\female.png" />
+    <Content Include="Resources\Images\footerpopup_sep.png" />
+    <Content Include="Resources\Images\footer_bg_content.png" />
+    <Content Include="Resources\Images\footer_oneparttext.gif" />
+    <Content Include="Resources\Images\footer_oneparttext.png" />
+    <Content Include="Resources\Images\footer_twoparttext.gif" />
+    <Content Include="Resources\Images\footer_twoparttext.png" />
+    <Content Include="Resources\Images\frm_bg.gif" />
+    <Content Include="Resources\Images\GIF_Loader.gif" />
+    <Content Include="Resources\Images\greenprogressbarBg.gif" />
+    <Content Include="Resources\Images\grid_cntheadingbg.jpg" />
+    <Content Include="Resources\Images\grid_heading.png" />
+    <Content Include="Resources\Images\grid_headingblue.jpg" />
+    <Content Include="Resources\Images\grid_headingblue.png" />
+    <Content Include="Resources\Images\headerbg.jpg" />
+    <Content Include="Resources\Images\heading_bluebg.jpg" />
+    <Content Include="Resources\Images\help_task.gif" />
+    <Content Include="Resources\Images\hig_progcircle_loading24.gif" />
+    <Content Include="Resources\Images\icon_addsubscribe.gif" />
+    <Content Include="Resources\Images\icon_commentapp.gif" />
+    <Content Include="Resources\Images\icon_gridView.png" />
+    <Content Include="Resources\Images\icon_gridView_cirGreen1.png" />
+    <Content Include="Resources\Images\icon_gridView_cirGreen2.png" />
+    <Content Include="Resources\Images\icon_gridView_complete.png" />
+    <Content Include="Resources\Images\icon_gridView_dis.png" />
+    <Content Include="Resources\Images\icon_newproject.png" />
+    <Content Include="Resources\Images\icon_newproject2.png" />
+    <Content Include="Resources\Images\icon_ownapp.png" />
+    <Content Include="Resources\Images\icon_right.png" />
+    <Content Include="Resources\Images\icon_thumbapp.gif" />
+    <Content Include="Resources\Images\icon_thumbdown_app.gif" />
+    <Content Include="Resources\Images\icon_thumb_app.gif" />
+    <Content Include="Resources\Images\icon_travelto.png" />
+    <Content Include="Resources\Images\icon_traveltolondon.png" />
+    <Content Include="Resources\Images\ico_AccuRewards.png" />
+    <Content Include="Resources\Images\ico_addApp.png" />
+    <Content Include="Resources\Images\ico_addfile.gif" />
+    <Content Include="Resources\Images\ico_applause.png" />
+    <Content Include="Resources\Images\ico_arrowdown_blue.gif" />
+    <Content Include="Resources\Images\ico_arrowleft.jpg" />
+    <Content Include="Resources\Images\ico_arrowright.jpg" />
+    <Content Include="Resources\Images\ico_bay.gif" />
+    <Content Include="Resources\Images\ico_bay_big.gif" />
+    <Content Include="Resources\Images\ico_bay_child.gif" />
+    <Content Include="Resources\Images\ico_bcg_overview.jpg" />
+    <Content Include="Resources\Images\ico_blueMail.gif" />
+    <Content Include="Resources\Images\ico_close.gif" />
+    <Content Include="Resources\Images\ico_coins_copper.png" />
+    <Content Include="Resources\Images\ico_coins_gold.png" />
+    <Content Include="Resources\Images\ico_coins_silver.png" />
+    <Content Include="Resources\Images\ico_collapse.gif" />
+    <Content Include="Resources\Images\ico_conc_alert.gif" />
+    <Content Include="Resources\Images\ico_conc_app.jpg" />
+    <Content Include="Resources\Images\ico_conc_fldr.gif" />
+    <Content Include="Resources\Images\ico_Conc_LCoin.png" />
+    <Content Include="Resources\Images\ico_Conc_LTrophy.png" />
+    <Content Include="Resources\Images\ico_Conc_trophy.png" />
+    <Content Include="Resources\Images\ico_Conc_trophySilver.png" />
+    <Content Include="Resources\Images\ico_cross.gif" />
+    <Content Include="Resources\Images\ico_dis_forum.gif" />
+    <Content Include="Resources\Images\ico_DV_arrow.gif" />
+    <Content Include="Resources\Images\ico_employee.gif" />
+    <Content Include="Resources\Images\ico_expand.jpg" />
+    <Content Include="Resources\Images\ico_expand1.gif" />
+    <Content Include="Resources\Images\ico_files.gif" />
+    <Content Include="Resources\Images\ico_greeninitiative.gif" />
+    <Content Include="Resources\Images\ico_green_big.gif" />
+    <Content Include="Resources\Images\ico_gridview.gif" />
+    <Content Include="Resources\Images\ico_HRL2_close.gif" />
+    <Content Include="Resources\Images\ico_joining.gif" />
+    <Content Include="Resources\Images\ico_joininggreenTab.gif" />
+    <Content Include="Resources\Images\ico_joiningTab.gif" />
+    <Content Include="Resources\Images\ico_joining_h.gif" />
+    <Content Include="Resources\Images\ico_mail.gif" />
+    <Content Include="Resources\Images\ico_Malcolm.jpg" />
+    <Content Include="Resources\Images\ico_moduleArrow.png" />
+    <Content Include="Resources\Images\ico_multirow.gif" />
+    <Content Include="Resources\Images\ico_OfferTrends.gif" />
+    <Content Include="Resources\Images\ico_OfferTrends.jpg" />
+    <Content Include="Resources\Images\ico_pretab.gif" />
+    <Content Include="Resources\Images\ico_pretabactive.gif" />
+    <Content Include="Resources\Images\ico_privacy.gif" />
+    <Content Include="Resources\Images\ico_privacy_everyone.png" />
+    <Content Include="Resources\Images\ico_privacy_private.png" />
+    <Content Include="Resources\Images\ico_privacy_project.png" />
+    <Content Include="Resources\Images\ico_privacy_supervisor.png" />
+    <Content Include="Resources\Images\ico_PwrLunch.gif" />
+    <Content Include="Resources\Images\ico_RC_pie.gif" />
+    <Content Include="Resources\Images\ico_running.gif" />
+    <Content Include="Resources\Images\ico_settime.gif" />
+    <Content Include="Resources\Images\ico_singlerow.gif" />
+    <Content Include="Resources\Images\ico_subsribedApp.png" />
+    <Content Include="Resources\Images\ico_taskComleted.png" />
+    <Content Include="Resources\Images\ico_thumsup.gif" />
+    <Content Include="Resources\Images\ico_thumsup_Concerto.gif" />
+    <Content Include="Resources\Images\ico_timeline.png" />
+    <Content Include="Resources\Images\Ico_trophy.jpg" />
+    <Content Include="Resources\Images\ico_user.gif" />
+    <Content Include="Resources\Images\ico_userProfile.gif" />
+    <Content Include="Resources\Images\ico_watch.gif" />
+    <Content Include="Resources\Images\img.gif" />
+    <Content Include="Resources\Images\img_detailsArrow.gif" />
+    <Content Include="Resources\Images\img_divider_HLR.gif" />
+    <Content Include="Resources\Images\img_pie.png" />
+    <Content Include="Resources\Images\img_playBig.gif" />
+    <Content Include="Resources\Images\img_RC_HRL_pie.jpg" />
+    <Content Include="Resources\Images\img_RC_pie.gif" />
+    <Content Include="Resources\Images\img_RC_pie.png" />
+    <Content Include="Resources\Images\img_RC_pieSel_gif.gif" />
+    <Content Include="Resources\Images\img_RC_pie_HRL2.gif" />
+    <Content Include="Resources\Images\img_RC_pie_HRL3.jpg" />
+    <Content Include="Resources\Images\img_sampleForm.gif" />
+    <Content Include="Resources\Images\img_tab.jpg" />
+    <Content Include="Resources\Images\input_bluebg.jpg" />
+    <Content Include="Resources\Images\launch.gif" />
+    <Content Include="Resources\Images\launch.png" />
+    <Content Include="Resources\Images\launch_over.gif" />
+    <Content Include="Resources\Images\launch_over.png" />
+    <Content Include="Resources\Images\leftNavTabBg.jpg" />
+    <Content Include="Resources\Images\leftNavTabBg.png" />
+    <Content Include="Resources\Images\leftNavTabBg_hover.gif" />
+    <Content Include="Resources\Images\lefttab_top.png" />
+    <Content Include="Resources\Images\left_tabtop.png" />
+    <Content Include="Resources\Images\like.gif" />
+    <Content Include="Resources\Images\line-RC_hor.gif" />
+    <Content Include="Resources\Images\logo.png" />
+    <Content Include="Resources\Images\logo_1c-sudipta.png" />
+    <Content Include="Resources\Images\logo_1c.png" />
+    <Content Include="Resources\Images\logo_ctsonboardingform.gif" />
+    <Content Include="Resources\Images\logo_ctsonboardingform.jpg" />
+    <Content Include="Resources\Images\mailicon.jpg" />
+    <Content Include="Resources\Images\Malcolm.jpg" />
+    <Content Include="Resources\Images\male.png" />
+    <Content Include="Resources\Images\next-horizontal.png" />
+    <Content Include="Resources\Images\next-horizontalappslider.png" />
+    <Content Include="Resources\Images\next_calendarBlue.jpg" />
+    <Content Include="Resources\Images\noimage.gif" />
+    <Content Include="Resources\Images\notification_numbg.gif" />
+    <Content Include="Resources\Images\no_unsub.gif" />
+    <Content Include="Resources\Images\no_unsub.png" />
+    <Content Include="Resources\Images\no_unsub_over.gif" />
+    <Content Include="Resources\Images\no_unsub_over.png" />
+    <Content Include="Resources\Images\onboarding_ico.png" />
+    <Content Include="Resources\Images\one_click_filter_tags_lite_.gif" />
+    <Content Include="Resources\Images\opt_contentbg.png" />
+    <Content Include="Resources\Images\orangeLabel2.gif" />
+    <Content Include="Resources\Images\orangeLabel4.gif" />
+    <Content Include="Resources\Images\overlay.png" />
+    <Content Include="Resources\Images\overlayPopupBg.gif" />
+    <Content Include="Resources\Images\overlay_img_slidecontentbox.gif" />
+    <Content Include="Resources\Images\pagination_lftArrow.gif" />
+    <Content Include="Resources\Images\pagination_one.gif" />
+    <Content Include="Resources\Images\pagination_RtArrow.gif" />
+    <Content Include="Resources\Images\pag_lftArrow.gif" />
+    <Content Include="Resources\Images\pag_rtArrow.gif" />
+    <Content Include="Resources\Images\pdf_ico.gif" />
+    <Content Include="Resources\Images\photo-preview.gif" />
+    <Content Include="Resources\Images\photo.jpg" />
+    <Content Include="Resources\Images\popup_bg_bottom.png" />
+    <Content Include="Resources\Images\popup_contentbg.jpg" />
+    <Content Include="Resources\Images\popup_printrowbg.gif" />
+    <Content Include="Resources\Images\popup_seperator.gif" />
+    <Content Include="Resources\Images\pop_btnclose.gif" />
+    <Content Include="Resources\Images\prev-horizontal.png" />
+    <Content Include="Resources\Images\prev_sliderappstore.png" />
+    <Content Include="Resources\Images\pre_calendarBlue.jpg" />
+    <Content Include="Resources\Images\print_ico.gif" />
+    <Content Include="Resources\Images\progress_bar_submition.gif" />
+    <Content Include="Resources\Images\progress_imgconcierge.gif" />
+    <Content Include="Resources\Images\Rbox_headingbg.jpg" />
+    <Content Include="Resources\Images\Rbox_headingbg_cyan.jpg.jpg" />
+    <Content Include="Resources\Images\rc_pag_active2.jpg" />
+    <Content Include="Resources\Images\r_arrow_brdcm.gif" />
+    <Content Include="Resources\Images\search_boxbg.gif" />
+    <Content Include="Resources\Images\search_icon.gif" />
+    <Content Include="Resources\Images\search_inputbg.jpg" />
+    <Content Include="Resources\Images\search_magnify2.gif" />
+    <Content Include="Resources\Images\seperator_gridheading.jpg" />
+    <Content Include="Resources\Images\sep_grayColor.gif" />
+    <Content Include="Resources\Images\sep_gridheading.gif" />
+    <Content Include="Resources\Images\sep_left_column.png" />
+    <Content Include="Resources\Images\sep_RC.gif" />
+    <Content Include="Resources\Images\shorting_arrow.gif" />
+    <Content Include="Resources\Images\short_arrowup.gif" />
+    <Content Include="Resources\Images\sh_downarrow.gif" />
+    <Content Include="Resources\Images\slidetab_left.png" />
+    <Content Include="Resources\Images\slidetab_left1.png" />
+    <Content Include="Resources\Images\slidetab_right.png" />
+    <Content Include="Resources\Images\small-carousel.png" />
+    <Content Include="Resources\Images\spacer.gif" />
+    <Content Include="Resources\Images\spinner.gif" />
+    <Content Include="Resources\Images\star_rating.gif" />
+    <Content Include="Resources\Images\state_completed.gif" />
+    <Content Include="Resources\Images\state_l.gif" />
+    <Content Include="Resources\Images\state_m.gif" />
+    <Content Include="Resources\Images\state_pending.gif" />
+    <Content Include="Resources\Images\status_bar_pending.gif" />
+    <Content Include="Resources\Images\status_bar_pending.jpg" />
+    <Content Include="Resources\Images\status_rightcorner.png" />
+    <Content Include="Resources\Images\status_rightcorner2.png" />
+    <Content Include="Resources\Images\status_rightcorner3.png" />
+    <Content Include="Resources\Images\status_rightcorner4.png" />
+    <Content Include="Resources\Images\status_rightcorner5.png" />
+    <Content Include="Resources\Images\stat_h.gif" />
+    <Content Include="Resources\Images\stat_h.jpg" />
+    <Content Include="Resources\Images\stat_l.gif" />
+    <Content Include="Resources\Images\stat_m.gif" />
+    <Content Include="Resources\Images\stat_na.gif" />
+    <Content Include="Resources\Images\stat_null.gif" />
+    <Content Include="Resources\Images\strip_blue.gif" />
+    <Content Include="Resources\Images\strip_green.gif" />
+    <Content Include="Resources\Images\strip_green1.gif" />
+    <Content Include="Resources\Images\strip_orange.gif" />
+    <Content Include="Resources\Images\strip_pink.gif" />
+    <Content Include="Resources\Images\strip_purple.gif" />
+    <Content Include="Resources\Images\subHeading_brownbg.jpg" />
+    <Content Include="Resources\Images\subscribe_roundbtm.gif" />
+    <Content Include="Resources\Images\subscribe_roundbtm.png" />
+    <Content Include="Resources\Images\subscribe_roundtop.gif" />
+    <Content Include="Resources\Images\tabConc_on.gif" />
+    <Content Include="Resources\Images\tabUC_on.gif" />
+    <Content Include="Resources\Images\tab_off.jpg" />
+    <Content Include="Resources\Images\tab_on.jpg" />
+    <Content Include="Resources\Images\thumb_slide_btm.png" />
+    <Content Include="Resources\Images\tooltop_concierge.gif" />
+    <Content Include="Resources\Images\toplinkhover.png" />
+    <Content Include="Resources\Images\toplink_hover.png" />
+    <Content Include="Resources\Images\top_shadownav.png" />
+    <Content Include="Resources\Images\top_shadownav_settings.png" />
+    <Content Include="Resources\Images\trophy_concierge.jpg" />
+    <Content Include="Resources\Images\unsubscribe.gif" />
+    <Content Include="Resources\Images\unsubscribe.png" />
+    <Content Include="Resources\Images\unsubscribe_over.gif" />
+    <Content Include="Resources\Images\unsubscribe_over.png" />
+    <Content Include="Resources\Images\user_sharecab.gif" />
+    <Content Include="Resources\Images\user_sharecab2.gif" />
+    <Content Include="Resources\Images\verSeperatorLarge.gif" />
+    <Content Include="Resources\Images\verSeperatorSmall.gif" />
+    <Content Include="Resources\Images\wide_content_right_box_top.gif" />
+    <Content Include="Pages\AppHome.aspx" />
+    <Content Include="Resources\JS\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Resources\JS\jquery-1.4.1.js" />
+    <Content Include="Resources\JS\jquery-1.4.1.min.js" />
+    <Content Include="Resources\Styles\base.css" />
+    <Content Include="Resources\Styles\oneConcerto.css" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\DALTransaction.cs" />
+    <Compile Include="Handlers\AddBookingDetails.ashx.cs">
+      <DependentUpon>AddBookingDetails.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\AddReviews.ashx.cs">
+      <DependentUpon>AddReviews.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\DeleteBookingDetails.ashx.cs">
+      <DependentUpon>DeleteBookingDetails.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\GetBookedDetails.ashx.cs">
+      <DependentUpon>GetBookedDetails.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\GetCampus.ashx.cs">
+      <DependentUpon>GetCampus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\GetLocation.ashx.cs">
+      <DependentUpon>GetLocation.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\GetReviews.ashx.cs">
+      <DependentUpon>GetReviews.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\GetRoomAvailability.ashx.cs">
+      <DependentUpon>GetRoomAvailability.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\GetTrainingRoomDetails.ashx.cs">
+      <DependentUpon>GetTrainingRoomDetails.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AppHome.aspx.cs">
+      <DependentUpon>AppHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AppHome.aspx.designer.cs">
+      <DependentUpon>AppHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegisterRoom.aspx.cs">
+      <DependentUpon>RegisterRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RegisterRoom.aspx.designer.cs">
+      <DependentUpon>RegisterRoom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Docs\OneC VS Project Template.docx" />
+    <Content Include="Handlers\GetLocation.ashx" />
+    <Content Include="Handlers\GetCampus.ashx" />
+    <Content Include="Handlers\GetTrainingRoomDetails.ashx" />
+    <Content Include="Handlers\GetRoomAvailability.ashx" />
+    <Content Include="Handlers\AddBookingDetails.ashx" />
+    <Content Include="Handlers\DeleteBookingDetails.ashx" />
+    <Content Include="Handlers\GetBookedDetails.ashx" />
+    <Content Include="Handlers\AddReviews.ashx" />
+    <Content Include="Handlers\GetReviews.ashx" />
+    <None Include="OneC.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database Scripts\" />
+    <Folder Include="Test Cases\" />
+    <Folder Include="User Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrainingRoomBLL\TrainingRoomBLL.csproj">
+      <Project>{DABEA47D-D83F-4F31-80FE-3042AC34EA2A}</Project>
+      <Name>TrainingRoomBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrainingRoomEF\TrainingRoomEF.csproj">
+      <Project>{AB00B5B9-B1D3-4B06-84B3-7780A87FD7EC}</Project>
+      <Name>TrainingRoomEF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58799</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

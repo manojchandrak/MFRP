@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TrainingRoomAppDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="TrainingRoomAppDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblCampus" EntityType="TrainingRoomAppDBModel.tblCampu" />
+    <EntitySet Name="tblLocations" EntityType="TrainingRoomAppDBModel.tblLocation" />
+    <AssociationSet Name="FK__tblCampus__Locat__09DE7BCC" Association="TrainingRoomAppDBModel.FK__tblCampus__Locat__09DE7BCC">
+      <End Role="tblLocation" EntitySet="tblLocations" />
+      <End Role="tblCampu" EntitySet="tblCampus" />
+    </AssociationSet>
+    <FunctionImport Name="procGetLocation" ReturnType="Collection(TrainingRoomAppDBModel.GetLocation_Types)" />
+    <FunctionImport Name="procGetCampus" ReturnType="Collection(TrainingRoomAppDBModel.procGetCampus_Types)">
+      <Parameter Name="LocationName" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbltrainingRoomDetails" EntityType="TrainingRoomAppDBModel.tbltrainingRoomDetail" />
+    <FunctionImport Name="procGetTrainingRoomDetails" ReturnType="Collection(TrainingRoomAppDBModel.procGetTrainingRoomDetails_Types)">
+      <Parameter Name="LocationName" Mode="In" Type="String" />
+      <Parameter Name="CampusName" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tblSlots" EntityType="TrainingRoomAppDBModel.tblSlot" />
+    <FunctionImport Name="procRoomAvailability" ReturnType="Collection(TrainingRoomAppDBModel.procRoomAvailability_Types)">
+      <Parameter Name="TrainingRoomID" Mode="In" Type="String" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="procTrainingRoomBlocking">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="TrainingRoomID" Mode="In" Type="String" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteBookingDetails">
+      <Parameter Name="SlotID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="procGettingBookedDetails" ReturnType="Collection(TrainingRoomAppDBModel.procGettingBookedDetails_types)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tblReviews" EntityType="TrainingRoomAppDBModel.tblReview" />
+    <FunctionImport Name="uspAddReviews">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Reviews" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGetReviews" ReturnType="Collection(TrainingRoomAppDBModel.uspGetReviews_Types)" />
+  </EntityContainer>
+  <EntityType Name="tblCampu">
+    <Key>
+      <PropertyRef Name="CampusID" />
+    </Key>
+    <Property Type="Int32" Name="CampusID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CampusName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="LocationID" Nullable="false" />
+    <NavigationProperty Name="tblLocation" Relationship="TrainingRoomAppDBModel.FK__tblCampus__Locat__09DE7BCC" FromRole="tblCampu" ToRole="tblLocation" />
+  </EntityType>
+  <EntityType Name="tblLocation">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Type="Int32" Name="LocationID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="LocationName" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblCampus" Relationship="TrainingRoomAppDBModel.FK__tblCampus__Locat__09DE7BCC" FromRole="tblLocation" ToRole="tblCampu" />
+  </EntityType>
+  <Association Name="FK__tblCampus__Locat__09DE7BCC">
+    <End Type="TrainingRoomAppDBModel.tblLocation" Role="tblLocation" Multiplicity="1" />
+    <End Type="TrainingRoomAppDBModel.tblCampu" Role="tblCampu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLocation">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tblCampu">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="GetLocation_Types">
+    <Property Type="String" Name="LocationName" Nullable="false" />
+    <Property Type="Int32" Name="LocationID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="procGetCampus_Types">
+    <Property Type="Int32" Name="CampusID" Nullable="false" />
+    <Property Type="String" Name="CampusName" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="tbltrainingRoomDetail">
+    <Key>
+      <PropertyRef Name="TrainingRoomID" />
+    </Key>
+    <Property Type="String" Name="TrainingRoomID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TrainingRoomname" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Block" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Floornumber" />
+    <Property Type="String" Name="LocationName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CampusName" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="procGetTrainingRoomDetails_Types">
+    <Property Type="String" Name="TrainingRoomID" Nullable="false" />
+    <Property Type="String" Name="TrainingRoomname" Nullable="false" />
+    <Property Type="Int32" Name="Floornumber" Nullable="false" />
+    <Property Type="String" Name="Block" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="tblSlot">
+    <Key>
+      <PropertyRef Name="SlotID" />
+    </Key>
+    <Property Type="Int32" Name="SlotID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="UserID" />
+    <Property Type="String" Name="TrainingRoomID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="FromDate" />
+    <Property Type="DateTime" Name="ToDate" />
+  </EntityType>
+  <ComplexType Name="procRoomAvailability_Types">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="TrainingRoomID" Nullable="false" />
+    <Property Type="DateTime" Name="FromDate" Nullable="false" />
+    <Property Type="DateTime" Name="ToDate" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="procGettingBookedDetails_types">
+    <Property Type="Int32" Name="SlotID" Nullable="false" />
+    <Property Type="String" Name="TrainingRoomID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="fromdate" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="todate" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <EntityType Name="tblReview">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Type="Int32" Name="ReviewId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Reviews" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="uspGetReviews_Types">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Reviews" Nullable="false" MaxLength="400" />
+  </ComplexType>
+</Schema>

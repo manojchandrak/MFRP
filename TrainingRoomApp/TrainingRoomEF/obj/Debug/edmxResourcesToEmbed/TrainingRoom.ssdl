@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TrainingRoomAppDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TrainingRoomAppDBModelStoreContainer">
+    <EntitySet Name="tblCampus" EntityType="TrainingRoomAppDBModel.Store.tblCampus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblLocation" EntityType="TrainingRoomAppDBModel.Store.tblLocation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblReviews" EntityType="TrainingRoomAppDBModel.Store.tblReviews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblSlot" EntityType="TrainingRoomAppDBModel.Store.tblSlot" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbltrainingRoomDetails" EntityType="TrainingRoomAppDBModel.Store.tbltrainingRoomDetails" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__tblCampus__Locat__09DE7BCC" Association="TrainingRoomAppDBModel.Store.FK__tblCampus__Locat__09DE7BCC">
+      <End Role="tblLocation" EntitySet="tblLocation" />
+      <End Role="tblCampus" EntitySet="tblCampus" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tblCampus">
+    <Key>
+      <PropertyRef Name="CampusID" />
+    </Key>
+    <Property Name="CampusID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CampusName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblLocation">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LocationName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblReviews">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Reviews" Type="nvarchar" Nullable="false" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="tblSlot">
+    <Key>
+      <PropertyRef Name="SlotID" />
+    </Key>
+    <Property Name="SlotID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="TrainingRoomID" Type="nvarchar" MaxLength="50" />
+    <Property Name="FromDate" Type="date" />
+    <Property Name="ToDate" Type="date" />
+  </EntityType>
+  <EntityType Name="tbltrainingRoomDetails">
+    <Key>
+      <PropertyRef Name="TrainingRoomID" />
+    </Key>
+    <Property Name="TrainingRoomID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TrainingRoomname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Block" Type="nvarchar" MaxLength="50" />
+    <Property Name="Floornumber" Type="int" />
+    <Property Name="LocationName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CampusName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__tblCampus__Locat__09DE7BCC">
+    <End Role="tblLocation" Type="TrainingRoomAppDBModel.Store.tblLocation" Multiplicity="1" />
+    <End Role="tblCampus" Type="TrainingRoomAppDBModel.Store.tblCampus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLocation">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tblCampus">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DeleteBookingDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SlotID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="procGetcampus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="procGetLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="procGettingBookedDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="procGetTrainingRoomDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CampusName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="procRoomAvailability" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TrainingRoomID" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="procTrainingRoomBlocking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="TrainingRoomID" Type="nvarchar" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="uspAddReviews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Reviews" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="uspGetReviews" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

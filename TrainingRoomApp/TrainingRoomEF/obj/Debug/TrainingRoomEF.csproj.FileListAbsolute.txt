@@ -1,0 +1,6 @@
+D:\Team MSVK\TrainingRoomApp\TrainingRoomEF\bin\Debug\TrainingRoomEF.dll.config
+D:\Team MSVK\TrainingRoomApp\TrainingRoomEF\bin\Debug\TrainingRoomEF.dll
+D:\Team MSVK\TrainingRoomApp\TrainingRoomEF\bin\Debug\TrainingRoomEF.pdb
+D:\Team MSVK\TrainingRoomApp\TrainingRoomEF\obj\Debug\ResolveAssemblyReference.cache
+D:\Team MSVK\TrainingRoomApp\TrainingRoomEF\obj\Debug\TrainingRoomEF.dll
+D:\Team MSVK\TrainingRoomApp\TrainingRoomEF\obj\Debug\TrainingRoomEF.pdb

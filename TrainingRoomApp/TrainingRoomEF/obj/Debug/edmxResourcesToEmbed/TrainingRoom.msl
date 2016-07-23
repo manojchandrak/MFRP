@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TrainingRoomAppDBModelStoreContainer" CdmEntityContainer="TrainingRoomAppDBEntities">
+    <EntitySetMapping Name="tblCampus">
+      <EntityTypeMapping TypeName="TrainingRoomAppDBModel.tblCampu">
+        <MappingFragment StoreEntitySet="tblCampus">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="CampusName" ColumnName="CampusName" />
+          <ScalarProperty Name="CampusID" ColumnName="CampusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLocations">
+      <EntityTypeMapping TypeName="TrainingRoomAppDBModel.tblLocation">
+        <MappingFragment StoreEntitySet="tblLocation">
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="procGetLocation" FunctionName="TrainingRoomAppDBModel.Store.procGetLocation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TrainingRoomAppDBModel.GetLocation_Types">
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procGetCampus" FunctionName="TrainingRoomAppDBModel.Store.procGetcampus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TrainingRoomAppDBModel.procGetCampus_Types">
+          <ScalarProperty Name="CampusID" ColumnName="CampusID" />
+          <ScalarProperty Name="CampusName" ColumnName="CampusName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbltrainingRoomDetails">
+      <EntityTypeMapping TypeName="TrainingRoomAppDBModel.tbltrainingRoomDetail">
+        <MappingFragment StoreEntitySet="tbltrainingRoomDetails">
+          <ScalarProperty Name="CampusName" ColumnName="CampusName" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="Floornumber" ColumnName="Floornumber" />
+          <ScalarProperty Name="Block" ColumnName="Block" />
+          <ScalarProperty Name="TrainingRoomname" ColumnName="TrainingRoomname" />
+          <ScalarProperty Name="TrainingRoomID" ColumnName="TrainingRoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="procGetTrainingRoomDetails" FunctionName="TrainingRoomAppDBModel.Store.procGetTrainingRoomDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TrainingRoomAppDBModel.procGetTrainingRoomDetails_Types">
+          <ScalarProperty Name="TrainingRoomID" ColumnName="TrainingRoomID" />
+          <ScalarProperty Name="TrainingRoomname" ColumnName="TrainingRoomname" />
+          <ScalarProperty Name="Floornumber" ColumnName="Floornumber" />
+          <ScalarProperty Name="Block" ColumnName="Block" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tblSlots">
+      <EntityTypeMapping TypeName="TrainingRoomAppDBModel.tblSlot">
+        <MappingFragment StoreEntitySet="tblSlot">
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="TrainingRoomID" ColumnName="TrainingRoomID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="procRoomAvailability" FunctionName="TrainingRoomAppDBModel.Store.procRoomAvailability">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TrainingRoomAppDBModel.procRoomAvailability_Types">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TrainingRoomID" ColumnName="TrainingRoomID" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="procTrainingRoomBlocking" FunctionName="TrainingRoomAppDBModel.Store.procTrainingRoomBlocking" />
+    <FunctionImportMapping FunctionImportName="DeleteBookingDetails" FunctionName="TrainingRoomAppDBModel.Store.DeleteBookingDetails" />
+    <FunctionImportMapping FunctionImportName="procGettingBookedDetails" FunctionName="TrainingRoomAppDBModel.Store.procGettingBookedDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TrainingRoomAppDBModel.procGettingBookedDetails_types">
+          <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+          <ScalarProperty Name="TrainingRoomID" ColumnName="TrainingRoomID" />
+          <ScalarProperty Name="fromdate" ColumnName="fromdate" />
+          <ScalarProperty Name="todate" ColumnName="todate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tblReviews">
+      <EntityTypeMapping TypeName="TrainingRoomAppDBModel.tblReview">
+        <MappingFragment StoreEntitySet="tblReviews">
+          <ScalarProperty Name="Reviews" ColumnName="Reviews" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="uspAddReviews" FunctionName="TrainingRoomAppDBModel.Store.uspAddReviews" />
+    <FunctionImportMapping FunctionImportName="uspGetReviews" FunctionName="TrainingRoomAppDBModel.Store.uspGetReviews">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TrainingRoomAppDBModel.uspGetReviews_Types">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Reviews" ColumnName="Reviews" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

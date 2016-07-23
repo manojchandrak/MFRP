@@ -1,0 +1,24 @@
+﻿
+The below code sample shows how to use the URL Redirection part and using its properties
+=============================================================================================
+
+protected void Page_Load(object sender, EventArgs e)
+{
+    try
+    {
+        RedirectionUrl obj = new RedirectionUrl();
+        List<Output> objLst = new List<Output>();
+        objLst = obj.FormRedirectionUrl(int.Parse(appId), appurl, Urltype, DateTime.Now);
+        //...
+    }
+
+    catch (UserContextException uex)
+    {
+        // Handle URL Redirection exception here
+    }
+	catch (Exception ex)
+	{
+		// Handle other exceptions here
+	}
+}
+
